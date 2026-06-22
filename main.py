@@ -25,22 +25,36 @@ def creer_random_temperatures():
     return temperatures
 
 def creer_random_humidites():
-    himidites = []
+    humidites = []
     
     for i in range(20):
-        hum =  random.randint(20, 80)
+        hum =  random.randint(2000, 8000)/100
         
         humidite = {
             "type": "humidite",
             "valeur" : hum,
         }
         
-        himidites.append(humidite)
+        humidites.append(humidite)
         
-    return himidites
+    return humidites
+
+# ============== AFFFICHAGE ================
 
 temperatures = creer_random_temperatures()
 
 for t in temperatures: 
     print(etat_capteur(t["valeur"], 17, 25))
+    
+humidites = creer_random_humidites()
+
+for h in humidites:
+    print(etat_capteur(h["valeur"], 30, 60 ))
+
+t = moyenne(moyenne_mesures(creer_random_temperatures()))
+print(t)
+h = moyenne(moyenne_mesures(creer_random_humidites()))
+print(h)
+
+print(niveau_confort(t, h))
     

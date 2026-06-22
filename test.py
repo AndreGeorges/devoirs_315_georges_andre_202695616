@@ -1,5 +1,5 @@
 
-mesures = [ {"type": "temp", "valeur": 21.4},{"type": "temp", "valeur": 17.6}  ] 
+# mesures = [ {"type": "temp", "valeur": 21.4},{"type": "temp", "valeur": 17.6}  ] 
 
 def etat_capteur(valeur, seuil_min, seuil_max):
     if valeur >= seuil_max+10 or valeur<= seuil_min-10:
@@ -11,16 +11,7 @@ def etat_capteur(valeur, seuil_min, seuil_max):
     else:
         return (f"{valeur} est un état moyen")
     
-# renvoie la moyenne des nombres contenus dans liste. Vous devez accumuler la 
-# somme dans une boucle (sans utiliser de fonction toute faite qui calcule la moyenne). 
-def moyenne(liste: list[float]):
-    total = 0
-    if len(liste) == 0:
-        return 0
-    for valeur in liste:
-        total += valeur
-    moyenne = total / len(liste)
-    return moyenne
+
 
 # reçoit une liste de mesures, où chaque mesure est un dictionnaire
 # La fonction extrait la valeur de chaque mesure (mesure["valeur"]), les regroupe dans une liste, puis 
@@ -31,6 +22,16 @@ def moyenne_mesures(mesures: list[dict[str, float]]) :
         liste.append(m["valeur"])
     return liste
 
+# renvoie la moyenne des nombres contenus dans liste. Vous devez accumuler la 
+# somme dans une boucle (sans utiliser de fonction toute faite qui calcule la moyenne). 
+def moyenne(liste: list[float]):
+    total = 0
+    if len(liste) == 0:
+        return 0
+    for valeur in liste:
+        total += valeur
+    moyenne = total / len(liste)
+    return round(moyenne, 2)
 
 # Combine deux entrées pour renvoyer une appréciation du confort, par exemple : 
 # • "confortable", "trop sec", "trop humide", "inconfortable".
